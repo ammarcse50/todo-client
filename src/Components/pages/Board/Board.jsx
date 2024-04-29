@@ -6,12 +6,12 @@ const Board = () => {
             
 
 
+    
 
 
 
 
 
-            
         </div>
     );
 };

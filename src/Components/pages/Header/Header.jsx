@@ -1,3 +1,4 @@
+import axios from "axios";
 
 const Header = () => {
 
@@ -16,8 +17,8 @@ const Header = () => {
 
         console.log(task)
 
-
-
+         
+        axios.post('')
 
     }
     return (
@@ -40,7 +41,7 @@ const Header = () => {
          
         </div>
         <div className="form-control mt-9 ">
-          <button className="btn hover:shadow-xl hover:shadow-[#0ecb34] ">+Add</button>
+          <button className="btn hover:shadow-xl hover:shadow-[#0ecb34] text-white text-xl ">+Add</button>
         </div>
       </form>
 
