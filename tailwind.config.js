@@ -2,11 +2,11 @@
 export default {
   themes: ["light", "dark", "cupcake"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
+  
   theme: {
     extend: {
       fontFamily: {
-        cus: ["Exo 2", "sans-serif"],
+        saira: ["Saira", "sans-serif"],
       },
     },
   },

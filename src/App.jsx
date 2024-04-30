@@ -3,16 +3,10 @@ import Header from "./Components/pages/Header/Header";
 
 const App = () => {
   return (
-    <div>
-      <div className="font-cus max-w-4xl mx-auto">
-         <Header></Header>
-       <Board></Board>
-      </div>
-
-          
-
-
-
+    <div className="font-saira max-w-4xl mx-auto bg-orange-500 rounded-lg shadow-xl">
+      <Header></Header>
+    
+      <Board></Board>
     </div>
   );
 };
