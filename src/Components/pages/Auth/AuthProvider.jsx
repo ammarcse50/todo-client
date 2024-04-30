@@ -42,22 +42,22 @@ const AuthProvider = ({ children }) => {
   };
   const logOut = () => {
 
-    setLoading(true)
+    // setLoading(true)
 
     return signOut(auth)
    
   };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+  
       
         setUser(user);
         setLoading(false)
-      }
+      
     });
     
     return () => {
-        return unSubscribe();
+        unSubscribe();
       };
     }, []);
   

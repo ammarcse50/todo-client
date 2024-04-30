@@ -4,13 +4,17 @@ import { AuthContext } from "../Auth/AuthProvider";
 import { Link,  useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { user, logOut ,loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   
 
 
   const handleSignOut = () => {
-    return logOut();
+    logOut()
+    .then(()=>{
+        alert('logout sucess')
+    })
+    .catch(err=>console.log(err))
   };
   const handleAddTask = (e) => {
     e.preventDefault();
@@ -81,10 +85,10 @@ const Header = () => {
             <h2 className="md:text-5xl text-3xl font-bold mt-2">My Todos</h2>
           </div>
           <div className="navbar-end mt-3">
-            { user ? 
-              <button onClick={handleSignOut} className="btn btn-sm hover:shadow-xl hover:shadow-[#0ecb34] text-white text-sm ">
+            { user?
+              <a onClick={handleSignOut} className="btn btn-sm hover:shadow-xl hover:shadow-[#0ecb34] text-white text-sm ">
                 Logout
-              </button>
+              </a>
               :
              <Link to="/login"><button  className="btn">Sign In</button></Link> 
             }
