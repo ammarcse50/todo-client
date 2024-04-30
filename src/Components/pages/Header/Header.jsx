@@ -16,7 +16,7 @@ const Header = () => {
         let timerInterval;
         Swal.fire({
           title: "You are logged Out!",
-          timer: 2000,
+          timer: 1000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading();
@@ -41,8 +41,31 @@ const Header = () => {
     e.preventDefault();
 
     if (!user) {
+        let timerInterval;
+Swal.fire({
+  title: "You Must Sign In First!",
+ 
+  timer: 1000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading();
+    const timer = Swal.getPopup().querySelector("b");
+    timerInterval = setInterval(() => {
+      timer.textContent = `${Swal.getTimerLeft()}`;
+    }, 100);
+  },
+  willClose: () => {
+    clearInterval(timerInterval);
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log("I was closed by the timer");
+  }
+});
       return navigate("/login");
     }
+
 
     const form = e.target;
 
