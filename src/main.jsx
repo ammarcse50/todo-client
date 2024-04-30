@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element:<Update></Update>,
-        loader: ({params}) => fetch(`https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos/${params.id}`)
+        loader: ({params}) => fetch(`https://todoo-server-production.up.railway.app/todos/${params.id}`)
       },
       {
         path: '/login',

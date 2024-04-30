@@ -26,7 +26,7 @@ const Update = () => {
               const task = {email,title,desc}
               console.log(task)
 
-              axios.put(`https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos/${_id}`,task)
+              axios.put(`https://todoo-server-production.up.railway.app/todos/${_id}`,task)
               .then(()=>{
                  
                 let timerInterval;

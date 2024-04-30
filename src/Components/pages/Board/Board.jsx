@@ -8,7 +8,7 @@ const Board = () => {
 
   const [record, setRecord] = useState([]);
 
-  const url = `https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos?email=${user?.email}`;
+  const url = `https://todoo-server-production.up.railway.app/todos?email=${user?.email}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ const Board = () => {
 
      // delete task 
     const handleDelete = (id) => {
-        axios.delete(`https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos/${id}`).then((res) => {
+        axios.delete(`https://todoo-server-production.up.railway.app/todos/${id}`).then((res) => {
           console.log(res.data);
         });
         const filter = record.filter((data) => data._id !== id);
