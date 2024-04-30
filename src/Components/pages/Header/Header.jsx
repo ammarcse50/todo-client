@@ -5,10 +5,10 @@ import { Link,  useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut} = useContext(AuthContext);
   const navigate = useNavigate();
   
-
+ 
 
   const handleSignOut = () => {
     logOut()
