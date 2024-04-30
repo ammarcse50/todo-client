@@ -1,5 +1,6 @@
 import { FaPen } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Todo = ({ data, handleDelete }) => {
   const { title, desc, _id } = data;
@@ -12,14 +13,14 @@ const Todo = ({ data, handleDelete }) => {
       </div>
 
       <div className="flex items-center gap-3">
-        <a href="">
+        <Link to={`/update/${_id}`} >
           {" "}
           <FaPen className="text-2xl text-[#0ecb34]" />
-        </a>
+        </Link>
 
         <a onClick={() => handleDelete(_id)} href="">
           {" "}
-          <MdDeleteForever className="text-4xl text-[#ff0707]" />
+          <MdDeleteForever className="text-4xl  text-[#ff0707]" />
         </a>
       </div>
     </div>

@@ -14,6 +14,7 @@ const Board = () => {
     axios.get(url).then((res) => setRecord(res.data));
   }, []);
 
+     // delete task 
     const handleDelete = (id) => {
         axios.delete(`http://localhost:5000/todos/${id}`).then((res) => {
           console.log(res.data);

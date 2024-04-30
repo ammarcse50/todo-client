@@ -10,6 +10,7 @@ import AuthProvider from './Components/pages/Auth/AuthProvider.jsx';
 import Login from './Components/pages/Auth/Login.jsx';
 import Layout from './Components/Layout/Layout.jsx';
 import Register from './Components/pages/Auth/Register.jsx';
+import Update from './Components/pages/Update/Update.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element:<App></App>
+      },
+      {
+        path: '/update/:id',
+        element:<Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5000/todos/${params.id}`)
       },
       {
         path: '/login',
