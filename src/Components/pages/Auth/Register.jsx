@@ -1,10 +1,12 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 
 const Register = () => {
+
+    const navigate = useNavigate()
   const { user, signUpUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
@@ -40,14 +42,15 @@ const Register = () => {
             console.log("I was closed by the timer");
           }
         });
-      })
+          navigate('/login')  
+    })
 
       .catch((error) => console.log(error));
   };
 
   return (
     <div className="mt-10">
-      <h2 className="text-5xl font-bold text-center">Register Now!</h2>
+      <h2 className="text-5xl font-bold text-center text-white">Register Now!</h2>
       <form onSubmit={handleRegister} className="card-body md:w-1/2 mx-auto">
         <div className="form-control">
           <label className="label">

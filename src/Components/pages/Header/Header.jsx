@@ -78,7 +78,7 @@ Swal.fire({
     console.log(task);
 
     axios
-      .post("http://localhost:5000/todos", task)
+      .post("https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos", task)
       .then((res) =>{
        
         if(res.data.insertedId)
@@ -147,7 +147,7 @@ Swal.fire({
             </div>
           </div>
           <div className="navbar-center ">
-            <h2 className="md:text-5xl text-3xl font-bold mt-2">My Todos</h2>
+            <h2 className="md:text-5xl text-3xl font-bold text-white mt-2">My Todos</h2>
           </div>
           <div className="navbar-end mt-3">
             { user?
@@ -168,7 +168,7 @@ Swal.fire({
         >
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Title</span>
+              <span className="label-text text-xl text-white">Title</span>
             </label>
             <input
               type="text"
@@ -180,7 +180,7 @@ Swal.fire({
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Description</span>
+              <span className="label-text text-xl text-white">Description</span>
             </label>
             <input
               type="text"
@@ -190,7 +190,7 @@ Swal.fire({
               required
             />
           </div>
-          <div className="form-control mt-9 ">
+          <div className="form-control mt-10 ">
             <button className="btn hover:shadow-xl hover:shadow-[#0ecb34] text-white text-xl ">
               +Add
             </button>

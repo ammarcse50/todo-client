@@ -50,7 +50,7 @@ const Login = () => {
 
   return (
     <div className="mt-10">
-      <h2 className="text-5xl font-bold text-center">Login Now! </h2>
+      <h2 className="text-5xl font-bold text-center text-white">Login Now! </h2>
       <form onSubmit={handleLogin} className="card-body md:w-1/2 mx-auto">
         <div className="form-control">
           <label className="label">

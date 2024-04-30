@@ -8,15 +8,25 @@ const Board = () => {
 
   const [record, setRecord] = useState([]);
 
-  const url = `http://localhost:5000/todos?email=${user?.email}&sort=1`;
+  const url = `https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos?email=${user?.email}`;
 
   useEffect(() => {
-    axios.get(url).then((res) => setRecord(res.data));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        setRecord(response.data);
+      } catch (error) {
+        // Handle errors here
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
   }, []);
 
      // delete task 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/todos/${id}`).then((res) => {
+        axios.delete(`https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos/${id}`).then((res) => {
           console.log(res.data);
         });
         const filter = record.filter((data) => data._id !== id);

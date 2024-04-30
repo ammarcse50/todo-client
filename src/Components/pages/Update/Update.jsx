@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Update = () => {
 
-       
+        const navigate = useNavigate()
     
      const loadData = useLoaderData();
 
@@ -25,10 +26,34 @@ const Update = () => {
               const task = {email,title,desc}
               console.log(task)
 
-              axios.put(`http://localhost:5000/todos/${_id}`,task)
-              .then(res=>{
-                console.log('updated data',res.data)
-              })
+              axios.put(`https://todoo-server-79c10agex-ammars-projects-dc5c7534.vercel.app/todos/${_id}`,task)
+              .then(()=>{
+                 
+                let timerInterval;
+                Swal.fire({
+                  title: "Your Task Updated!",
+                  
+                  timer: 1000,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                      timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval);
+                  }
+                }).then((result) => {
+                  /* Read more about handling dismissals below */
+                  if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                  }
+                });
+                
+                 navigate("/")
+            })
 
 
      }
