@@ -7,25 +7,29 @@ const Board = () => {
   const { user } = useContext(AuthContext);
 
   const [record, setRecord] = useState([]);
-        
+
   const url = `http://localhost:5000/todos?email=${user?.email}&sort=1`;
 
   useEffect(() => {
-    axios
-      .get(url)
-      
-      .then(res => setRecord(res.data));
+    axios.get(url).then((res) => setRecord(res.data));
   }, []);
 
-  const handleDelete = (id) => {
-    console.log(id, "deleted");
-  };
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:5000/todos/${id}`).then((res) => {
+          console.log(res.data);
+        });
+        const filter = record.filter((data) => data._id !== id);
+    
+        setRecord(filter);
+      };
+    
+
 
   return (
     <div className=" min-h-screen">
       <div className="pr-5 pb-4">
-        {record?.map((data, idx) => (
-          <Todo key={idx} handleDelete={handleDelete} data={data}></Todo>
+        {record?.map((data) => (
+          <Todo key={data._id} handleDelete={handleDelete} data={data}></Todo>
         ))}
       </div>
     </div>
