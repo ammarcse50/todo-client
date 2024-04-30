@@ -1,6 +1,7 @@
 import  { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
@@ -21,8 +22,29 @@ const Login = () => {
           
        signInUser(email,password)
        .then((res)=>{
-        console.log(res.user)
-        alert('Login Success!')
+        let timerInterval;
+Swal.fire({
+  title: "Login Successful!",
+ 
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading();
+    const timer = Swal.getPopup().querySelector("b");
+    timerInterval = setInterval(() => {
+      timer.textContent = `${Swal.getTimerLeft()}`;
+    }, 100);
+  },
+  willClose: () => {
+    clearInterval(timerInterval);
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log("I was closed by the timer");
+  }
+});
+        
         navigate('/')
        })
        .catch((err)=> {

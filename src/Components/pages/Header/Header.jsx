@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
 import { Link,  useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -12,7 +13,27 @@ const Header = () => {
   const handleSignOut = () => {
     logOut()
     .then(()=>{
-        alert('logout sucess')
+        let timerInterval;
+        Swal.fire({
+          title: "You are logged Out!",
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
     })
     .catch(err=>console.log(err))
   };
@@ -39,7 +60,28 @@ const Header = () => {
        
         if(res.data.insertedId)
         { console.log(res.data)
-            alert('DataInserted')
+            let timerInterval;
+            Swal.fire({
+              title: "New Task Added!",
+             
+              timer: 1000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                  timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(timerInterval);
+              }
+            }).then((result) => {
+              /* Read more about handling dismissals below */
+              if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+              }
+            });
         }
         form.reset()
       })
