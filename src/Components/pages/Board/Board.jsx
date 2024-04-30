@@ -16,8 +16,8 @@ const Board = () => {
     });
 
   return (
-    <div className="border min-h-screen">
-      <div className="pr-5">
+    <div className=" min-h-screen">
+      <div className="pr-5 pb-4">
         {record.map((data) => (
           <Todo key={data._id} data={data}></Todo>
         ))}
