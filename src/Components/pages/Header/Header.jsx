@@ -78,7 +78,7 @@ Swal.fire({
     console.log(task);
 
     axios
-      .post("https://todoo-server-production.up.railway.app/todos", task)
+      .post("http://localhost:5000/todos", task)
       .then((res) =>{
        
         if(res.data.insertedId)

@@ -1,7 +1,5 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Auth/AuthProvider';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Update = () => {
@@ -26,7 +24,7 @@ const Update = () => {
               const task = {email,title,desc}
               console.log(task)
 
-              axios.put(`https://todoo-server-production.up.railway.app/todos/${_id}`,task)
+              axios.put(`http://localhost:5000/todos/${_id}`,task)
               .then(()=>{
                  
                 let timerInterval;

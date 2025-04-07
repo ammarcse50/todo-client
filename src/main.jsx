@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element:<Update></Update>,
-        loader: ({params}) => fetch(`https://todoo-server-production.up.railway.app/todos/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/todos/${params.id}`)
       },
       {
         path: '/login',
